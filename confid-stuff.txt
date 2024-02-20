@@ -22,6 +22,9 @@ Usage: cfgmtd [options]
 
 
 
+inform router to adopt:
+set-inform http://192.168.1.1:8080/inform
+
 
   
 reset configuration:
