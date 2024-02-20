@@ -1,0 +1,28 @@
+Change config value in unifi switch (ap not tested)
+
+type into console:
+configval(){ echo "config before:"; cat /tmp/system.cfg | grep $1; sed -E -i "s/^($1[^=]*=).*$/\1$2/" -i /tmp/system.cfg; echo "After change:"; cat /tmp/system.cfg | grep $1; }
+
+then usage: configval <confi-varaible> <newvalue>
+
+flash modified config (then roboot):
+cfgmtd -f /tmp/system.cfg -w
+
+ cfgmtd
+Usage: cfgmtd [options]
+        -t <type>                       - Configuration type to use [1(active)|2(backup)]. (Default: 1(active))
+        -f <config file>                - Configuration file to use. (Default: /tmp/system.cfg)
+        -p <persistent directory>       - Directory to persistent dir. (Default: none)
+        -w                              - Write to flash action.
+        -r                              - Read from flash action.
+        -c                              - Clear flash action.
+        -o <mtd|file name>              - Use mtd or file name. (Default: cfg)
+        -n                              - No check size when specify -o. (Default: Check)
+        -h                              - This message.
+
+
+
+
+  
+reset configuration:
+cp /tmp/default.cfg /tmp/system.cfg && cfgmtd -f /tmp/system.cfg -w && reboot
