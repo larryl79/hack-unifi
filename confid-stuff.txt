@@ -29,3 +29,6 @@ set-inform http://192.168.1.1:8080/inform
   
 reset configuration:
 cp /tmp/default.cfg /tmp/system.cfg && cfgmtd -f /tmp/system.cfg -w && reboot
+
+
+https://gist.github.com/modest/d6ffb2cdd5e38b213f24c29be38e3b1d
